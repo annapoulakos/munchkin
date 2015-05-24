@@ -9,7 +9,7 @@ gulp.task('browserify', function () {
     return browserify()
         .transform(babelify)
         .transform(partialify)
-        .require('./source/redsatori.com/index.js', {
+        .require('./index.js', {
             entry: true
         })
         .bundle()
@@ -17,23 +17,9 @@ gulp.task('browserify', function () {
             console.error(err.toString());
             this.emit('end');
         })
-        .pipe(fs.createWriteStream('./redsatori.com/js/bundle.js'));
+        .pipe(fs.createWriteStream('./dist/bundle.js'));
 });
 
-gulp.task('b2', function () {
-    return browserify()
-        .transform(babelify)
-        .transform(partialify)
-        .require('./source/munchkin/index.js', {
-            entry: true
-        })
-        .bundle()
-        .on('error', function (err) {
-            console.error(error.toString());
-            this.emit('end');
-        })
-        .pipe(fs.createWriteStream('./redsatori.com/js/munchkin.js'));
-});
 
 /*gulp.task('karma', function (done) {
     karma.start({
@@ -42,8 +28,10 @@ gulp.task('b2', function () {
     }, done);
 });
 */
+// pretty sure this watch regex will work for you but don't trust it
+// if you feel that it is not
 gulp.task('watch', function () {
-    gulp.watch('./source/**/*.*', ['browserify', 'b2']);
+    gulp.watch('./**/*.[html|js|sass|scss|json|es6]', ['browserify', 'b2']);
 });
 
 gulp.task('default', ['watch']);
