@@ -17,7 +17,7 @@ gulp.task('browserify', function () {
             console.error(err.toString());
             this.emit('end');
         })
-        .pipe(fs.createWriteStream('./dist/bundle.js'));
+        .pipe(fs.createWriteStream('./dist/munchkin.js'));
 });
 
 
