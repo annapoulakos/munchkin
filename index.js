@@ -3,5 +3,5 @@
 /* Imports */
 import jpRoute from './routes';
 
-angular.module('jpMunchkin', [])
+angular.module('jpMunchkin', ['ngRoute'])
 .config(jpRoute);

@@ -1,7 +1,7 @@
 /* jshint esnext: true */
 
-import HomeTemplate from './home/main.html';
-import HomeController from './home/';
+var HomeTemplate = require('./home/main.html');
+import HomeController from './home';
 
 var jpRoute = function ($routeProvider, $locationProvider) {
     $routeProvider
